@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header style="background-color: rgba(66, 66, 66,0.9);" id="header1">
+        <div class="header">Philip</div>
+        <div class="header">Mama</div>
+        <div class="header">Anat</div>
+        <div class="header">Gala</div>
+        <div class="header">Marina</div>
+        <div class="header">Masha</div>
+    </header>
+    <br>
+    <div id="bigestdiv">
+        <div id="formdiv">
+            <form method="post" action="/signup" id="form1">
+                <label for="textbox">:הזן שם </label> <br>
+                <input type="text" name="name" id="name"> <br>
+                <label for="textbox">:הזן שם משתמש</label> <br>
+                <input type="text" name="textbox" id="textbox"> <br>
+                <label for="textbox">:הזן סיסמא </label> <br>
+                <input type="password" name="password" id="password"><br>
+                
+                {% for msg in get_flashed_messages() %}
+                <div class="flash">{{msg}}</div>
+                {% endfor %}
+                <input type="submit" value="שלח" id="submit">
+            </form>
+        </div>
+    </div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 8px;
+        }
+
+        #submit {
+            transition-delay: 50ms;
+            transition-duration: 150ms;
+            border: none;
+            background-color: rgb(100, 100, 100);
+            width: 50px;
+            height: 30px;
+            color: rgb(235, 235, 235);
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        #submit:hover {
+            color: white;
+        }
+
+        #header1 {
+            height: 35px;
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-top: 7px;
+            width: 100%;
+            transition-duration: 300ms;
+            transition-delay: 100ms;
+            color: rgb(240, 240, 240);
+            border-radius: 0%;
+            font-size: 13px;
+        }
+
+        #header1:hover {
+            height: 150px;
+        }
+
+        #formdiv {
+            display: flex;
+            justify-content: center;
+            width: 300px;
+            height: 150px;
+        }
+
+        #bigestdiv {
+            display: flex;
+            margin-top: 350px;
+            justify-content: center;
+        }
+
+        #textbox,
+        #password,
+        #name {
+            border: none;
+            background-color: rgb(235, 234, 234);
+            height: 30px;
+        }
+
+        #textbox:focus,
+        #password:focus,
+        #name:focus {
+            outline-color: rgb(52, 174, 255);
+        }
+
+        .header:hover {
+            color: white;
+        }
+    </style>
+</body>
+
+</html>

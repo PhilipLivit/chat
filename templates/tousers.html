@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="position: fixed;" class="con">=</div>
+    <header id="header1">
+        <div></div>
+        <div class="header">Philip</div>
+        <div class="header">Mama</div>
+        <div class="header">Anat</div>
+        <div class="header">Gala</div>
+        <div class="header">Marina</div>
+        <div>
+            <form action="/leave" method="post">
+                <input type="submit" value="התנתק" id="red" name="red">
+            </form>
+        </div>
+
+
+    </header>
+
+    <div id="newbody">
+        <div id="div">
+            <h2>hi {{usert}}</h2>
+        </div>
+        <br><br>
+
+        <div id="divnewbody">
+            <div id="divsend">
+                <form action="/send" method="post">
+                    <label for="addressee">Who will you send to?</label> <input type="text" name="addressee"
+                        id="addressee">
+                    <br>
+                    <br>
+                    <textarea name="message" id="message" cols="50" rows="10"
+                        placeholder="Enter the message..."></textarea>
+                    <br>
+                    <input type="submit" value="send">
+                </form>
+            </div>
+
+            <div id="msgs">
+                {% for i in range(num,0,-1) %}
+                <div class="inmsgs">
+                    <p>
+                    <h5>from {{ they[i][0] }}:</h5> {{ mssege[i][0] }}
+                    </p>
+                </div>
+                <br><br><br>
+                {% endfor %}
+            </div>
+            
+        </div>
+
+    </div>
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 8px;
+        }
+
+        #divsend {
+            margin-left: 1%;
+            width: 50%;
+            height: 100%;
+        }
+
+        input,
+        textarea {
+            padding-left: 5px;
+            border: none;
+            background-color: rgb(235, 234, 234);
+        }
+
+        textarea {
+            width: 90%;
+            height: 240px;
+            max-height: 240px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline-color: rgb(52, 174, 255);
+        }
+
+        #header1 {
+            display: none;
+            height: 40px;
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-top: 7px;
+            width: 100%;
+            transition-duration: 300ms;
+            transition-delay: 100ms;
+            color: rgb(240, 240, 240);
+            border-radius: 0%;
+            font-size: 13px;
+            background-color: rgba(66, 66, 66, 0.9);
+        }
+
+        #header1:hover {
+            height: 150px;
+            background-color: rgb(39, 39, 39);
+        }
+
+        #div {
+            font-size: 30px;
+            color: black;
+            padding-top: 100px;
+            margin-left: 1%;
+        }
+
+        #red {
+            color: red;
+        }
+
+        #newbody {
+            padding: 10px;
+        }
+
+        #divnewbody {
+            display: flex;
+        }
+
+        #msgs {
+            font-size: 20px;
+            margin-left: 200px;
+            width: 50%;
+            height: 100%;
+        }
+
+        .inmsgs {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(235, 234, 234);
+            border-radius: 20px;
+            padding-left: 15px;
+            padding-right: 30px;
+            max-width: 90%;
+            word-wrap: break-word;
+            display: inline-block;
+
+        }
+
+
+        h5 {
+            font-weight: 700;
+        }
+
+
+
+        .con {
+            display: none;
+            transition: all 0.3s ease;
+            position: fixed;
+            right: 20px;
+            position: relative;
+            z-index: 9999;
+            color: rgb(218, 218, 218);
+            margin-top: -10px;
+            cursor: pointer;
+            font-size: 38px;
+            border-radius: 25px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+
+        @media only screen and (max-width: 800px) {
+            #divnewbody {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            #msgs {
+                font-size: 20px;
+                margin-left: 20px;
+                margin-top: 50px;
+                width: 100%;
+            }
+
+
+            #divsend {
+                margin-left: 1%;
+                height: 100%;
+                width: 100%;
+            }
+
+            .header {
+                visibility: hidden;
+            }
+
+            #red {
+                visibility: hidden;
+            }
+
+            #header1 {
+                height: 40px;
+                position: fixed;
+                flex-direction: row;
+            }
+
+            #header1:hover {
+                height: 40px;
+                background-color: rgba(66, 66, 66, 0.9);
+
+            }
+
+            .con {
+                display: block;
+            }
+
+
+        }
+    </style>
+
+
+    <script>
+
+
+
+        header1 = document.querySelector("#header1")
+        headers = document.querySelectorAll(".header")
+        red = document.querySelector("#red")
+
+        let t = false
+        document.querySelector(".con").addEventListener("click", function () {
+            if (!t) {
+                header1.style.height = "100%";
+                header1.style.backgroundColor = "rgb(39, 39, 39)";
+                header1.style.flexDirection = "column"
+                red.style.visibility = "visible";
+                for (let i = 0; i < headers.length; i++) {
+                    headers[i].style.visibility = "visible";
+                }
+                t = true;
+            }
+            else if (t) {
+                header1.style.height = "40px";
+                header1.style.backgroundColor = "rgba(66, 66, 66, 0.9)";
+                header1.style.flexDirection = "row"
+                red.style.visibility = "hidden";
+                for (let i = 0; i < headers.length; i++) {
+                    headers[i].style.visibility = "hidden";
+                }
+                t = false;
+            }
+
+            let button = document.querySelector(".con")
+            if (button.textContent === '=') {
+                button.style.transform = 'rotate(360deg)';
+                button.style.top = 17 + 'px';
+                button.style.right = 36 + 'px';
+                // button.style.color = 'white';
+                button.style.fontSize = '20px';
+                button.innerHTML = '&#x2715';
+                button.style.width = '0.1px'
+            } else {
+                button.style.transform = 'rotate(0deg)';
+                button.style.top = 0 + 'px';
+                button.style.backgroundColor = 'transparent';
+                button.style.fontSize = '38px';
+                // button.style.color = 'white';
+                button.textContent = '=';
+            }
+
+            // con.innerHTML = " &#10006";
+            // con.style.fontSize = "20px"
+
+        });
+    </script>
+
+
+</body>
+
+</html>
